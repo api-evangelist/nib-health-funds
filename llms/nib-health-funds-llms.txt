@@ -1,0 +1,51 @@
+# nib (nib holdings limited)
+
+> Australian private health insurer (ASX:NHF), headquartered in Newcastle, New South Wales, and one of the country's largest health funds alongside Medibank, Bupa and HCF. Lines of business: Australian residents health insurance, New Zealand health insurance (nib nz insurance limited), international workers and overseas student health cover (OSHC), travel insurance, and nib Thrive (NDIS plan management).
+
+> API posture: nib publishes NO public developer portal, NO OpenAPI/Swagger definition, NO GraphQL schema, NO AsyncAPI or webhook catalog, and NO SDK. A real first-party AWS API Gateway exists at api-gateway.nib.com.au — it is named in nib's own Content-Security-Policy and answers every anonymous request with HTTP 403 {"message":"Forbidden"}. Healthcare provider integration is a login wall (the nib HCP portal) plus third-party HICAPS and HealthPoint claiming terminals. The only genuinely public, machine-readable surfaces are an RFC 9116 security.txt and the Auth0-backed OpenID Connect discovery documents for member sign-in. Australia's Consumer Data Right was designated for general insurance and then deferred, and never reached private health insurance, so there is no regulatory forcing function pushing nib toward public APIs.
+
+## Public machine-readable surfaces
+
+- [OpenID Connect discovery — Australia](https://id.nib.com.au/.well-known/openid-configuration): Auth0 member identity tenant, issuer https://id.nib.com.au/. HTTP 200 anonymously.
+- [OAuth 2.0 authorization server metadata — Australia](https://id.nib.com.au/.well-known/oauth-authorization-server): RFC 8414 metadata, byte-identical to the OIDC document.
+- [JWKS — Australia](https://id.nib.com.au/.well-known/jwks.json): 2 RS256 signing keys.
+- [OpenID Connect discovery — New Zealand](https://id.nib.co.nz/.well-known/openid-configuration): sibling Auth0 tenant, issuer https://id.nib.co.nz/.
+- [security.txt](https://www.nib.com.au/.well-known/security.txt): RFC 9116. Contact mailto:security@nib.com.au. Expires 2024-07-01 (stale but served).
+
+## Repository artifacts
+
+- [apis.yml](https://raw.githubusercontent.com/api-evangelist/nib-health-funds/refs/heads/main/apis.yml): APIs.json index for nib.
+- [Authentication profile](https://raw.githubusercontent.com/api-evangelist/nib-health-funds/refs/heads/main/authentication/nib-health-funds-authentication.yml): OIDC/OAuth 2.0 endpoints, grants, client-auth methods, DPoP and CIBA support.
+- [OAuth scopes](https://raw.githubusercontent.com/api-evangelist/nib-health-funds/refs/heads/main/scopes/nib-health-funds-scopes.yml): the 14 identity scopes the tenants advertise. No product scopes are published.
+- [Well-known index](https://raw.githubusercontent.com/api-evangelist/nib-health-funds/refs/heads/main/well-known/nib-health-funds-well-known.yml): every /.well-known/ path probed, with status.
+- [Conformance](https://raw.githubusercontent.com/api-evangelist/nib-health-funds/refs/heads/main/conformance/nib-health-funds-conformance.yml): OAuth/OIDC/PKCE/DPoP/CIBA conform; FAPI, OpenAPI, AsyncAPI, GraphQL, FHIR, ACORD and CDR do not.
+- [Packages](https://raw.githubusercontent.com/api-evangelist/nib-health-funds/refs/heads/main/packages/nib-health-funds-packages.yml): nib's first-party npm scopes — frontend/DevOps tooling, no API client library.
+- [Domain security](https://raw.githubusercontent.com/api-evangelist/nib-health-funds/refs/heads/main/security/nib-health-funds-domain-security.yml): TLS 1.3, HSTS present, no DNSSEC, no CAA, DMARC p=none.
+- [Vulnerability disclosure](https://raw.githubusercontent.com/api-evangelist/nib-health-funds/refs/heads/main/security/nib-health-funds-vulnerability-disclosure.yml): security@nib.com.au via security.txt.
+- [Review](https://raw.githubusercontent.com/api-evangelist/nib-health-funds/refs/heads/main/review.yml): full probe log — every developer host and path that was checked and what it returned.
+
+## Human surfaces
+
+- [nib](https://www.nib.com.au/): corporate and consumer site.
+- [Member login](https://my.nib.com.au/login): redirects to the id.nib.com.au identity tenant.
+- [Healthcare providers](https://www.nib.com.au/providers): provider landing page.
+- [nib HCP portal login](https://www.nib.com.au/providers/hcp-portal/user/login): authenticated provider portal — a login wall, not a developer portal.
+- [Ancillary providers](https://www.nib.com.au/providers/ancillary): directs practitioners to HICAPS and HealthPoint terminals for electronic claiming.
+- [Help](https://www.nib.com.au/help)
+- [Contact](https://www.nib.com.au/contact-us)
+- [The Check Up (blog)](https://www.nib.com.au/the-checkup)
+- [Media](https://www.nib.com.au/media)
+- [Legal](https://www.nib.com.au/legal)
+- [Online terms](https://www.nib.com.au/docs/online-terms)
+- [Privacy policy](https://www.nib.com.au/legal/privacy-policy)
+- [Careers](https://www.nib.com.au/careers)
+- [GitHub — nib-health-funds](https://github.com/nib-health-funds): 51 public repos, frontend/DevOps utilities, no API specification.
+- [GitHub — nib-components](https://github.com/nib-components): 94 public repos.
+- [GitHub — nib-styles](https://github.com/nib-styles): 66 public repos.
+
+## What does not exist
+
+- No developer portal. developer.nib.com.au, developers.nib.com.au, docs.nib.com.au and api.nib.com.au do not resolve; /developers, /api, /developer, /partners and /integrations on nib.com.au all return 404.
+- No OpenAPI, Swagger, GraphQL SDL, AsyncAPI, gRPC/Protobuf, MCP server, agent skills, CLI, sandbox, changelog, status page, roadmap, Postman workspace or public pricing API.
+- No product, policy, claims or partner OAuth scopes.
+- No trust centre or published certification program.

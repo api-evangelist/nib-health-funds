@@ -1,0 +1,82 @@
+generated: '2026-07-25'
+method: searched
+source: live probes of nib host /.well-known/ surfaces
+note: |
+  nib publishes no product API discovery surface. Two things are genuinely
+  public and machine-readable: an RFC 9116 security.txt on the marketing site,
+  and the Auth0-backed OpenID Connect discovery documents for the Australian
+  (id.nib.com.au) and New Zealand (id.nib.co.nz) member identity tenants. The
+  first-party AWS API Gateway at api-gateway.nib.com.au answers every
+  /.well-known/ path with HTTP 403 {"message":"Forbidden"} — credential-gated,
+  no anonymous discovery.
+hosts:
+- host: https://www.nib.com.au
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: nib-health-funds-security.txt
+    note: RFC 9116. Contact mailto:security@nib.com.au. Expires field is 2024-07-01
+      — the document is stale/expired but served live.
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: https://id.nib.com.au
+  note: Auth0-backed OpenID Connect tenant for nib Australia member sign-in.
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: nib-health-funds-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: nib-health-funds-oauth-authorization-server.json
+    note: Byte-identical to the openid-configuration document (Auth0 behaviour).
+  - path: /.well-known/jwks.json
+    status: 200
+    file: nib-health-funds-jwks.json
+    note: 2 RS256 signing keys.
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://id.nib.co.nz
+  note: Sibling Auth0 OpenID Connect tenant for nib New Zealand member sign-in.
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: nib-health-funds-nz-openid-configuration.json
+- host: https://api-gateway.nib.com.au
+  note: Live first-party AWS API Gateway named in nib's own Content-Security-Policy.
+    Every anonymous request returns 403 {"message":"Forbidden"}.
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+- host: https://my.nib.com.au
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+- host: https://www.nib.co.nz
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+- host: https://www.worldnomads.com
+  note: nib group travel brand.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /llms.txt
+    status: 404

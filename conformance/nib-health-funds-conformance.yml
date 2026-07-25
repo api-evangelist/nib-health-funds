@@ -1,0 +1,113 @@
+generated: '2026-07-25'
+method: derived
+source: well-known/nib-health-funds-openid-configuration.json, well-known/nib-health-funds-security.txt,
+  security/nib-health-funds-domain-security.yml, review.yml
+note: |
+  Derived from the only machine-readable artifacts nib exposes anonymously: the
+  Auth0 OpenID Connect discovery documents, the RFC 9116 security.txt, and live
+  TLS/DNS probes. nib publishes no OpenAPI, no AsyncAPI, no GraphQL SDL and no
+  compliance/trust centre, so every product-API conformance assertion below is
+  unknown rather than false — the surface is credential-gated, not absent.
+standards:
+- id: oauth2
+  conforms: true
+  evidence: Auth0 authorization server at https://id.nib.com.au/ publishes RFC 8414
+    metadata with authorization, token, revocation and device-code endpoints.
+- id: oidc-core
+  conforms: true
+  evidence: /.well-known/openid-configuration returns 200 with issuer, jwks_uri, userinfo_endpoint
+    and id_token_signing_alg_values_supported.
+- id: oidc-discovery
+  conforms: true
+  evidence: https://id.nib.com.au/.well-known/openid-configuration and https://id.nib.co.nz/.well-known/openid-configuration
+    both return 200 anonymously.
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: true
+  evidence: /.well-known/oauth-authorization-server returns 200 (byte-identical to
+    the OIDC document).
+- id: rfc7636-pkce
+  conforms: true
+  evidence: code_challenge_methods_supported includes S256.
+- id: rfc8628-device-authorization-grant
+  conforms: true
+  evidence: device_authorization_endpoint present; grant_types_supported includes urn:ietf:params:oauth:grant-type:device_code.
+- id: rfc8693-token-exchange
+  conforms: true
+  evidence: grant_types_supported includes urn:ietf:params:oauth:grant-type:token-exchange.
+- id: rfc7523-jwt-bearer
+  conforms: true
+  evidence: grant_types_supported includes urn:ietf:params:oauth:grant-type:jwt-bearer;
+    private_key_jwt client authentication supported.
+- id: rfc9449-dpop
+  conforms: true
+  evidence: dpop_signing_alg_values_supported includes ES256.
+- id: openid-ciba
+  conforms: true
+  evidence: backchannel_authentication_endpoint present with poll delivery mode.
+- id: openid-backchannel-logout
+  conforms: true
+  evidence: backchannel_logout_supported true; backchannel_logout_session_supported
+    true.
+- id: rfc7591-dynamic-client-registration
+  conforms: true
+  evidence: registration_endpoint https://id.nib.com.au/oidc/register advertised.
+- id: rfc9116-security-txt
+  conforms: true
+  evidence: https://www.nib.com.au/.well-known/security.txt returns 200 with Contact
+    and Preferred-Languages fields.
+  caveat: The Expires field is 2024-07-01T00:01:00.000Z — the document is expired under
+    RFC 9116 §2.5.5 while still being served.
+- id: fapi
+  conforms: false
+  evidence: token_endpoint_auth_methods_supported still includes 'none' and client_secret_post;
+    implicit and password grants remain enabled; no FAPI profile is claimed.
+- id: rfc9457-problem-details
+  conforms: unknown
+  evidence: No product API is publicly reachable. api-gateway.nib.com.au returns a
+    bare {"message":"Forbidden"} AWS API Gateway envelope, not application/problem+json.
+- id: openapi
+  conforms: false
+  evidence: No OpenAPI or Swagger document found at any probed host or path (see review.yml
+    probes).
+- id: asyncapi
+  conforms: false
+  evidence: No event catalog, webhook documentation, or AsyncAPI definition published.
+- id: graphql
+  conforms: false
+  evidence: No /graphql surface reachable on nib.com.au, api.nib.co.nz, or api-gateway.nib.com.au.
+- id: fhir-r4
+  conforms: false
+  evidence: Australian private health insurance runs on Medicare ECLIPSE and HICAPS/HealthPoint
+    terminal rails, not FHIR; no FHIR endpoint or CapabilityStatement found.
+- id: acord
+  conforms: false
+  evidence: No ACORD, AL3, ACORD XML, NGDS or ACORD-certification reference anywhere
+    on nib.com.au, its 1,445-URL sitemap, or the public GitHub organisations.
+- id: cdr-consumer-data-right
+  conforms: false
+  evidence: Australia's Consumer Data Right was designated for general insurance and
+    then deferred; it never reached private health insurance, so no CDR register participation,
+    no /cds-au/v1 endpoints, and no InfoSec profile obligation exists for nib.
+- id: hsts
+  conforms: true
+  evidence: 'www.nib.com.au returns Strict-Transport-Security with max-age=15768000
+    (security/nib-health-funds-domain-security.yml).'
+- id: dnssec
+  conforms: false
+  evidence: nib.com.au is not DNSSEC-signed.
+- id: caa
+  conforms: false
+  evidence: No CAA records published for nib.com.au.
+- id: dmarc
+  conforms: true
+  evidence: DMARC record present for nib.com.au with policy p=none (monitor only, not
+    enforcing).
+- id: spf
+  conforms: true
+  evidence: SPF record present for nib.com.au.
+compliance_program:
+  published: false
+  note: No trust centre, no SOC 2 / ISO 27001 / PCI DSS certification page, and no
+    published compliance posture was found. nib's regulatory obligations run through
+    APRA and the Private Health Insurance Act rather than a customer-facing compliance
+    program, so no `Compliance` pointer is emitted.

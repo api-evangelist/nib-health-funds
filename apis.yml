@@ -24,7 +24,11 @@ description: >-
   claiming terminals — HICAPS and HealthPoint — plus Honeysuckle Health for medical
   network and MediGap registration, not through an nib-published API. Member identity
   is an Auth0-backed OpenID Connect tenant at id.nib.com.au whose discovery document
-  is publicly readable. nib is recorded here as an honest partner-gated stub.
+  is publicly readable, as is an RFC 9116 security.txt at www.nib.com.au naming
+  security@nib.com.au. nib also publishes three first-party npm scopes (@nib, @nib-styles,
+  @nib-components) across four public GitHub organisations, but they carry frontend
+  and DevOps tooling rather than any API client library. nib is recorded here as an
+  honest partner-gated stub.
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Insurance
@@ -40,8 +44,64 @@ tags:
 created: '2026-07-25'
 modified: '2026-07-25'
 specificationVersion: '0.19'
-apis: []
+apis:
+- aid: nib-health-funds:identity
+  name: nib Identity (OpenID Connect)
+  description: >-
+    The Auth0-backed OpenID Connect tenant behind nib member sign-in, issuer
+    https://id.nib.com.au/. It is the only nib API surface with anonymously readable,
+    machine-readable metadata: the OIDC discovery document, the RFC 8414 authorization-server
+    metadata and the JWKS all return HTTP 200 without credentials, and the protected
+    endpoints (/userinfo, /oauth/token) return 401 to anonymous callers. It supports
+    authorization code with PKCE (S256), client credentials, device code, token exchange,
+    JWT bearer, refresh, implicit and password grants, plus DPoP (ES256), CIBA backchannel
+    authentication, backchannel logout and dynamic client registration. This is CONSUMER
+    SIGN-IN identity, not a product API — it publishes only the 14 standard OIDC/Auth0
+    identity scopes and no policy, claims, quote, member-data or partner scopes. nib's
+    actual product APIs sit behind api-gateway.nib.com.au, which returns 403 to every
+    anonymous request and publishes nothing. A sibling tenant serves nib New Zealand
+    at https://id.nib.co.nz/.
+  humanURL: https://my.nib.com.au/login
+  baseURL: https://id.nib.com.au
+  tags:
+  - Identity
+  - OpenID Connect
+  - OAuth 2.0
+  - Authentication
+  - Auth0
+  - Single Sign On
+  properties:
+  - type: OpenIDConnectDiscovery
+    url: https://id.nib.com.au/.well-known/openid-configuration
+  - type: Authentication
+    url: authentication/nib-health-funds-authentication.yml
+  - type: OAuthScopes
+    url: scopes/nib-health-funds-scopes.yml
+  - type: WellKnown
+    url: well-known/nib-health-funds-well-known.yml
 common:
+- type: Authentication
+  url: authentication/nib-health-funds-authentication.yml
+- type: OAuthScopes
+  url: scopes/nib-health-funds-scopes.yml
+- type: WellKnown
+  url: well-known/nib-health-funds-well-known.yml
+- type: SecurityTxt
+  url: well-known/nib-health-funds-security.txt
+- type: Security
+  url: https://www.nib.com.au/.well-known/security.txt
+- type: Conformance
+  url: conformance/nib-health-funds-conformance.yml
+- type: Packages
+  url: packages/nib-health-funds-packages.yml
+- type: LLMsTxt
+  url: llms/nib-health-funds-llms.txt
+- type: TermsOfService
+  url: https://www.nib.com.au/docs/online-terms
+- type: VulnerabilityDisclosure
+  url: security/nib-health-funds-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/nib-health-funds-domain-security.yml
 - type: Website
   url: https://www.nib.com.au/
 - type: GitHubOrganization

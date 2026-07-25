@@ -1,0 +1,100 @@
+generated: '2026-07-25'
+method: searched
+source: https://id.nib.com.au/.well-known/openid-configuration
+docs: https://id.nib.com.au/.well-known/openid-configuration
+note: |
+  Not derived from an OpenAPI — nib publishes none. These are the
+  scopes_supported values read verbatim from the anonymously-readable OpenID
+  Connect discovery documents of nib's Auth0 member identity tenants. Both the
+  Australian (id.nib.com.au) and New Zealand (id.nib.co.nz) tenants advertise
+  the identical set.
+
+  Every scope below is a standard OIDC / Auth0 identity scope. nib publishes NO
+  product scopes — nothing for policies, claims, quotes, members, providers, or
+  partner data. That is the honest shape of this provider's OAuth surface: a
+  consumer sign-in tenant, not a partner API authorization server.
+schemes:
+- name: nib Australia member identity (Auth0 OIDC)
+  source: well-known/nib-health-funds-openid-configuration.json
+  issuer: https://id.nib.com.au/
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://id.nib.com.au/authorize
+    tokenUrl: https://id.nib.com.au/oauth/token
+  - flow: clientCredentials
+    tokenUrl: https://id.nib.com.au/oauth/token
+  - flow: implicit
+    authorizationUrl: https://id.nib.com.au/authorize
+  - flow: deviceCode
+    deviceAuthorizationUrl: https://id.nib.com.au/oauth/device/code
+    tokenUrl: https://id.nib.com.au/oauth/token
+- name: nib New Zealand member identity (Auth0 OIDC)
+  source: well-known/nib-health-funds-nz-openid-configuration.json
+  issuer: https://id.nib.co.nz/
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://id.nib.co.nz/authorize
+    tokenUrl: https://id.nib.co.nz/oauth/token
+scopes:
+- scope: openid
+  description: Request an ID token — the base OpenID Connect scope.
+  category: identity
+  sources: [well-known/nib-health-funds-openid-configuration.json, well-known/nib-health-funds-nz-openid-configuration.json]
+- scope: profile
+  description: Basic profile claims (name, given_name, family_name, nickname, picture).
+  category: identity
+  sources: [well-known/nib-health-funds-openid-configuration.json, well-known/nib-health-funds-nz-openid-configuration.json]
+- scope: offline_access
+  description: Issue a refresh token so the client can renew access without the member
+    re-authenticating.
+  category: identity
+  sources: [well-known/nib-health-funds-openid-configuration.json, well-known/nib-health-funds-nz-openid-configuration.json]
+- scope: name
+  description: The member's full name claim.
+  category: identity
+  sources: [well-known/nib-health-funds-openid-configuration.json, well-known/nib-health-funds-nz-openid-configuration.json]
+- scope: given_name
+  description: The member's given name claim.
+  category: identity
+  sources: [well-known/nib-health-funds-openid-configuration.json, well-known/nib-health-funds-nz-openid-configuration.json]
+- scope: family_name
+  description: The member's family name claim.
+  category: identity
+  sources: [well-known/nib-health-funds-openid-configuration.json, well-known/nib-health-funds-nz-openid-configuration.json]
+- scope: nickname
+  description: The member's nickname claim.
+  category: identity
+  sources: [well-known/nib-health-funds-openid-configuration.json, well-known/nib-health-funds-nz-openid-configuration.json]
+- scope: email
+  description: The member's email address claim.
+  category: identity
+  sources: [well-known/nib-health-funds-openid-configuration.json, well-known/nib-health-funds-nz-openid-configuration.json]
+- scope: email_verified
+  description: Whether the member's email address has been verified.
+  category: identity
+  sources: [well-known/nib-health-funds-openid-configuration.json, well-known/nib-health-funds-nz-openid-configuration.json]
+- scope: picture
+  description: The member's profile picture claim.
+  category: identity
+  sources: [well-known/nib-health-funds-openid-configuration.json, well-known/nib-health-funds-nz-openid-configuration.json]
+- scope: created_at
+  description: When the member's identity record was created.
+  category: identity
+  sources: [well-known/nib-health-funds-openid-configuration.json, well-known/nib-health-funds-nz-openid-configuration.json]
+- scope: identities
+  description: Linked identity provider connections for the member (Auth0 identities
+    array).
+  category: identity
+  sources: [well-known/nib-health-funds-openid-configuration.json, well-known/nib-health-funds-nz-openid-configuration.json]
+- scope: phone
+  description: The member's phone number claim.
+  category: identity
+  sources: [well-known/nib-health-funds-openid-configuration.json, well-known/nib-health-funds-nz-openid-configuration.json]
+- scope: address
+  description: The member's address claim.
+  category: identity
+  sources: [well-known/nib-health-funds-openid-configuration.json, well-known/nib-health-funds-nz-openid-configuration.json]
+product_scopes:
+  published: false
+  note: No policy, claims, quote, member-data, provider, or partner scopes are published
+    by nib on any anonymously reachable surface.

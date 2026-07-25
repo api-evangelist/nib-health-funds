@@ -1,0 +1,240 @@
+generated: '2026-07-25'
+method: searched
+source: npm registry search (scopes @nib, @nib-styles, @nib-components) + GitHub organisations
+  nib-health-funds / nib-styles / nib-components / nib-group
+note: |
+  IMPORTANT — none of these are API client libraries. nib publishes no public
+  API and therefore no SDK. What it does publish, under three real first-party
+  npm scopes and four public GitHub organisations, is a decade of internal
+  frontend and DevOps tooling: an AngularJS/React component and style system
+  (@nib-components, @nib-styles), build tooling, AWS housekeeping utilities and
+  Australian-specific validators. They are catalogued here because they are
+  genuinely first-party published packages, not because they help anyone
+  integrate with nib.
+
+  Consequently NO `SDKs` pointer is emitted in apis.yml — the sdk_count check
+  must not fire on frontend widgets. Only a `Packages` pointer is wired.
+registries_probed:
+- registry: npm
+  result: 3 first-party scopes found (@nib, @nib-styles, @nib-components) plus one
+    unscoped package
+- registry: pypi
+  result: no first-party nib package found
+- registry: rubygems
+  result: no first-party nib package found
+- registry: maven-central
+  result: no first-party nib artifact found
+- registry: nuget
+  result: no first-party nib package found
+- registry: pkg.go.dev
+  result: no first-party nib module found
+- registry: packagist
+  result: no first-party nib package found
+- registry: crates.io
+  result: no first-party nib crate found
+sdks:
+  api_client_libraries: 0
+  note: No first-party client library for any nib API exists in any public registry.
+packages:
+- language: javascript
+  registry: npm
+  name: '@nib/validation-methods'
+  url: https://www.npmjs.com/package/@nib/validation-methods
+  install: npm install @nib/validation-methods
+  version: 1.2.1
+  published: '2016-06-07'
+  repository: https://github.com/nib-health-funds/validation-methods
+  official: true
+  category: form-validation
+  description: Basic validation methods used across nib's web front ends.
+- language: javascript
+  registry: npm
+  name: '@nib/buildkite-inline-image'
+  url: https://www.npmjs.com/package/@nib/buildkite-inline-image
+  install: npm install @nib/buildkite-inline-image
+  version: 0.1.1
+  published: '2017-01-27'
+  repository: https://github.com/nib-health-funds/node-buildkite-inline-image
+  official: true
+  category: ci-tooling
+  description: Outputs inline images into the Buildkite build log.
+- language: javascript
+  registry: npm
+  name: '@nib/node-gatling'
+  url: https://www.npmjs.com/package/@nib/node-gatling
+  install: npm install @nib/node-gatling
+  version: 2.0.0
+  published: '2017-01-26'
+  repository: https://github.com/nib-health-funds/node-gatling
+  official: true
+  category: load-testing
+  description: Node wrapper around the Gatling load-testing binaries.
+- language: javascript
+  registry: npm
+  name: '@nib/react-price-ticker'
+  url: https://www.npmjs.com/package/@nib/react-price-ticker
+  install: npm install @nib/react-price-ticker
+  version: 0.1.0
+  published: '2017-02-22'
+  repository: https://github.com/nib-health-funds/react-price-ticker
+  official: true
+  category: ui-component
+  description: React price ticker component used in nib quote funnels.
+- language: javascript
+  registry: npm
+  name: '@nib/control'
+  url: https://www.npmjs.com/package/@nib/control
+  install: npm install @nib/control
+  version: 2.4.0
+  published: '2015-05-13'
+  repository: https://github.com/nib-health-funds/control
+  official: true
+  category: ui-component
+  description: Form control — validates user input, displays an error message, saves
+    to the model.
+- language: javascript
+  registry: npm
+  name: '@nib/view-mixins'
+  url: https://www.npmjs.com/package/@nib/view-mixins
+  install: npm install @nib/view-mixins
+  version: 0.2.0
+  published: '2015-05-13'
+  repository: https://github.com/nib-health-funds/view-mixins-chain
+  official: true
+  category: frontend-utility
+- language: javascript
+  registry: npm
+  name: '@nib/css-framework'
+  url: https://www.npmjs.com/package/@nib/css-framework
+  install: npm install @nib/css-framework
+  version: 1.0.0
+  published: '2022-02-22'
+  repository: https://github.com/nib-group/css-framework
+  official: true
+  category: design-system
+  description: CSS utilities and component styles for non-React nib projects. The most
+    recently published first-party nib package found.
+- language: javascript
+  registry: npm
+  name: gulp-rev-delete-original
+  url: https://www.npmjs.com/package/gulp-rev-delete-original
+  install: npm install gulp-rev-delete-original
+  version: 0.2.3
+  repository: https://github.com/nib-health-funds/gulp-rev-delete-original
+  official: true
+  category: build-tooling
+  description: Deletes the original file rewritten by gulp-rev. The only unscoped npm
+    package still pointing at the nib-health-funds GitHub organisation.
+- language: javascript
+  registry: npm
+  name: '@nib-styles/v2-icons'
+  url: https://www.npmjs.com/package/@nib-styles/v2-icons
+  install: npm install @nib-styles/v2-icons
+  version: 3.4.1
+  published: '2019-12-02'
+  repository: https://github.com/nib-styles/v2-icons
+  official: true
+  category: design-system
+- language: javascript
+  registry: npm
+  name: '@nib-styles/v2-typography'
+  url: https://www.npmjs.com/package/@nib-styles/v2-typography
+  install: npm install @nib-styles/v2-typography
+  version: 5.0.0
+  published: '2017-03-08'
+  repository: https://github.com/nib-styles/v2-typography
+  official: true
+  category: design-system
+- language: javascript
+  registry: npm
+  name: '@nib-styles/v2-buttons'
+  url: https://www.npmjs.com/package/@nib-styles/v2-buttons
+  install: npm install @nib-styles/v2-buttons
+  version: 4.0.0
+  published: '2017-03-08'
+  repository: https://github.com/nib-styles/v2-buttons
+  official: true
+  category: design-system
+- language: javascript
+  registry: npm
+  name: '@nib-styles/colors'
+  url: https://www.npmjs.com/package/@nib-styles/colors
+  install: npm install @nib-styles/colors
+  version: 1.1.1
+  published: '2015-12-14'
+  repository: https://github.com/nib-styles/colors
+  official: true
+  category: design-system
+- language: javascript
+  registry: npm
+  name: '@nib-styles/sass-grid'
+  url: https://www.npmjs.com/package/@nib-styles/sass-grid
+  install: npm install @nib-styles/sass-grid
+  version: 1.0.1
+  published: '2017-01-05'
+  repository: https://github.com/nib-styles/sass-grid
+  official: true
+  category: design-system
+- language: javascript
+  registry: npm
+  name: '@nib-components/masked-input'
+  url: https://www.npmjs.com/package/@nib-components/masked-input
+  install: npm install @nib-components/masked-input
+  version: 1.0.2
+  published: '2016-11-07'
+  repository: https://github.com/nib-components/masked-input
+  official: true
+  category: ui-component
+- language: javascript
+  registry: npm
+  name: '@nib-components/date-input-mask'
+  url: https://www.npmjs.com/package/@nib-components/date-input-mask
+  install: npm install @nib-components/date-input-mask
+  version: 1.0.0
+  published: '2016-11-07'
+  repository: https://github.com/nib-components/date-input-mask
+  official: true
+  category: ui-component
+republished_forks:
+- name: '@nib/soap'
+  registry: npm
+  url: https://www.npmjs.com/package/@nib/soap
+  version: 0.39.1
+  published: '2022-03-29'
+  upstream: https://github.com/vpulim/node-soap
+  official: true
+  note: nib-scoped republish of the community node-soap client. Circumstantial evidence
+    that nib's own integration rails are SOAP, not REST.
+- name: '@nib/httpntlm'
+  registry: npm
+  url: https://www.npmjs.com/package/@nib/httpntlm
+  version: 1.7.8
+  published: '2021-05-10'
+  upstream: https://github.com/cliff-mayson/node-http-ntlm
+  official: true
+  note: nib-scoped republish of an NTLM HTTP client — consistent with Windows/NTLM-authenticated
+    internal services.
+- name: '@nib/nconf-transforms'
+  registry: npm
+  url: https://www.npmjs.com/package/@nib/nconf-transforms
+  version: 0.1.0
+  published: '2018-01-11'
+  upstream: https://github.com/nib-health-funds/nconf-transforms
+  official: true
+source_repositories:
+- org: https://github.com/nib-health-funds
+  public_repos: 51
+  note: Frontend and DevOps utilities (tradie, hammertime, robin, cfn-batman, validate-medicare,
+    schema-validator). GitHub code search for `openapi` and `swagger` across the org
+    returns 0 results.
+- org: https://github.com/nib-styles
+  public_repos: 66
+  note: nib's CSS/SASS design-system repositories.
+- org: https://github.com/nib-components
+  public_repos: 94
+  note: nib's JavaScript/React component repositories.
+- org: https://github.com/nib-group
+  public_repos: 2
+  note: World Nomads Group leftovers (wng-Swashbuckle, wng-tripwise-Zip). wng-Swashbuckle
+    is a fork of the Swashbuckle Swagger generator — the closest thing to an API-spec
+    artifact in any nib organisation, and it is tooling, not a specification.

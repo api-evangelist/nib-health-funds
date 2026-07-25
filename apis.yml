@@ -1,0 +1,71 @@
+aid: nib-health-funds
+url: https://raw.githubusercontent.com/api-evangelist/nib-health-funds/refs/heads/main/apis.yml
+name: nib
+kind: company
+description: >-
+  nib holdings limited (ASX:NHF), trading as nib, is an Australian private
+  health insurer headquartered in Newcastle, New South Wales, and one of the country's
+  largest health funds alongside Medibank, Bupa and HCF. Its lines of business span
+  Australian residents health insurance, New Zealand health insurance through nib nz
+  insurance limited, international workers and overseas student health cover (OSHC),
+  travel insurance, and nib Thrive, its National Disability Insurance Scheme plan-management
+  arm. As a private health insurer it is regulated by APRA and the Private Health Insurance
+  Act rather than by an open-data mandate — Australia's Consumer Data Right was designated
+  to extend to general insurance and then deferred, and it never reached private health
+  insurance at all, so there is no regulatory forcing function pushing nib toward public
+  APIs. Its API posture reflects that exactly: nib publishes no public, self-serve
+  developer portal and no downloadable OpenAPI definitions. Probes of developer.nib.com.au,
+  developers.nib.com.au, docs.nib.com.au and api.nib.com.au do not resolve, and /developers,
+  /api, /developer, /partners and /integrations on nib.com.au all return 404. A real
+  AWS API Gateway host, api-gateway.nib.com.au, is referenced by nib's own web front-end
+  Content-Security-Policy and answers anonymously with HTTP 403 {"message":"Forbidden"},
+  confirming a first-party, credential-gated gateway with no public documentation. Healthcare
+  provider integration runs through the login-walled nib HCP portal and through third-party
+  claiming terminals — HICAPS and HealthPoint — plus Honeysuckle Health for medical
+  network and MediGap registration, not through an nib-published API. Member identity
+  is an Auth0-backed OpenID Connect tenant at id.nib.com.au whose discovery document
+  is publicly readable. nib is recorded here as an honest partner-gated stub.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Insurance
+- Australia
+- Health Insurance
+- Carrier
+- Claims
+- Private Health Insurance
+- Travel Insurance
+- New Zealand
+- NDIS
+- Partner Gated
+created: '2026-07-25'
+modified: '2026-07-25'
+specificationVersion: '0.19'
+apis: []
+common:
+- type: Website
+  url: https://www.nib.com.au/
+- type: GitHubOrganization
+  url: https://github.com/nib-health-funds
+- type: LinkedIn
+  url: https://www.linkedin.com/company/nib-health
+- type: Blog
+  url: https://www.nib.com.au/the-checkup
+- type: Press
+  url: https://www.nib.com.au/media
+- type: Login
+  url: https://my.nib.com.au/login
+- type: PartnerPortal
+  url: https://www.nib.com.au/providers/hcp-portal/user/login
+- type: Providers
+  url: https://www.nib.com.au/providers
+- type: Support
+  url: https://www.nib.com.au/help
+- type: Contact
+  url: https://www.nib.com.au/contact-us
+- type: PrivacyPolicy
+  url: https://www.nib.com.au/legal/privacy-policy
+- type: OpenIDConnectDiscovery
+  url: https://id.nib.com.au/.well-known/openid-configuration
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

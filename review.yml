@@ -1,0 +1,299 @@
+aid: nib-health-funds
+name: nib
+review:
+  question: Does nib publish a public, self-serve developer portal or downloadable
+    OpenAPI definitions for its Australian private health insurance business?
+  answer: false
+  date: '2026-07-25'
+  reviewer: API Evangelist
+  homeMarket: Australia
+  tier: carrier-life-health
+  gated: true
+findings:
+  summary: |
+    nib holdings limited (ASX:NHF) publishes no public developer portal and no
+    downloadable API definitions. Every conventional developer host was probed
+    and none resolves: developer.nib.com.au, developers.nib.com.au,
+    docs.nib.com.au and api.nib.com.au all fail DNS resolution (curl exit /
+    HTTP 000). Every conventional developer path on the marketing site returns
+    404: /developers, /api, /developer, /partners, /integrations. The published
+    sitemap index (https://www.nib.com.au/sitemap.xml, 200) expands to 1,445
+    URLs and contains no developer, API, or integration documentation page of
+    any kind.
+
+    A real first-party API gateway does exist and is credential-gated. nib's own
+    web front-end Content-Security-Policy names api-gateway.nib.com.au (and the
+    non-production api-gateway.nib-cf-test.com). Probed anonymously, both answer
+    HTTP 403 with body {"message":"Forbidden"} — an AWS API Gateway with no
+    public documentation, no /openapi.json, /swagger.json, /docs or /api-docs
+    (all 403), and no anonymous discovery. This is the honest shape of the
+    surface: real internal APIs, zero public developer surface.
+
+    Healthcare provider integration is a login wall plus third-party terminals.
+    The nib HCP portal (https://www.nib.com.au/providers/hcp-portal/user/login,
+    200) is an authenticated provider portal, not a developer portal. nib's
+    ancillary provider pages direct practitioners to HICAPS and HealthPoint
+    terminals for electronic claiming and to Honeysuckle Health
+    (register.honeysucklehealth.com.au) for medical network and MediGap
+    registration. Claims enquiries route to providers@nib.com.au and a phone
+    number. No API, SDK, or specification is offered to providers.
+
+    nib does operate a public GitHub organisation, https://github.com/nib-health-funds
+    (51 public repositories, org created 2014-06-19). Its contents are frontend
+    and DevOps utilities — tradie, gulp-rev-delete-original, hammertime, robin,
+    cfn-batman, validate-medicare, schema-validator — with no OpenAPI, AsyncAPI,
+    or product API specification published. The repository literally named
+    api-integration is a single-commit, README-only repo with no specification
+    in it.
+
+    The one genuinely public machine-readable artifact is identity, not product.
+    nib's member login (https://my.nib.com.au/login) redirects to issuer
+    https://id.nib.com.au/, an Auth0-backed OpenID Connect tenant whose discovery
+    document is anonymously readable at HTTP 200. It is a consumer sign-in
+    tenant, not a partner API authorization server with published product scopes,
+    so no apis[] entry is claimed for it.
+  developerPortal:
+    url: ''
+    status: none
+    classification: no public developer portal
+    note: |
+      No self-serve developer portal, no partner API docs site, no login-walled
+      developer console with a public landing page. The closest thing to an
+      integration surface is the authenticated nib HCP provider portal, which is
+      classified here as a partner/agent login wall (category b), not a
+      developer portal.
+  probes:
+  - url: https://developer.nib.com.au
+    status: 000
+    note: DNS does not resolve.
+  - url: https://developers.nib.com.au
+    status: 000
+    note: DNS does not resolve.
+  - url: https://docs.nib.com.au
+    status: 000
+    note: DNS does not resolve.
+  - url: https://api.nib.com.au
+    status: 000
+    note: DNS does not resolve.
+  - url: https://www.nib.com.au/developers
+    status: 404
+  - url: https://www.nib.com.au/api
+    status: 404
+  - url: https://www.nib.com.au/developer
+    status: 404
+  - url: https://www.nib.com.au/partners
+    status: 404
+  - url: https://www.nib.com.au/integrations
+    status: 404
+  - url: https://www.nib.com.au/
+    status: 200
+    note: Corporate and consumer marketing site.
+  - url: https://www.nib.com.au/robots.txt
+    status: 200
+    note: Disallows /onlineservices, /home/providers, /search, /find-a-provider; declares sitemap.
+  - url: https://www.nib.com.au/sitemap.xml
+    status: 200
+    note: Sitemap index; 1,445 URLs expanded, none developer/API related.
+  - url: https://www.nib.com.au/openapi.json
+    status: 404
+  - url: https://www.nib.com.au/swagger.json
+    status: 404
+  - url: https://www.nib.com.au/.well-known/openid-configuration
+    status: 404
+  - url: https://www.nib.com.au/.well-known/oauth-authorization-server
+    status: 404
+  - url: https://api-gateway.nib.com.au/
+    status: 403
+    note: 'Live AWS API Gateway named in nib''s own CSP. Anonymous body: {"message":"Forbidden"}.
+      No public docs.'
+  - url: https://api-gateway.nib.com.au/openapi.json
+    status: 403
+  - url: https://api-gateway.nib.com.au/swagger.json
+    status: 403
+  - url: https://api-gateway.nib.com.au/docs
+    status: 403
+  - url: https://api-gateway.nib.com.au/graphql
+    status: 403
+  - url: https://api-gateway.nib.com.au/.well-known/openid-configuration
+    status: 403
+  - url: https://api-gateway.nib-cf-test.com/
+    status: 403
+    note: Non-production sibling gateway, also named in the CSP.
+  - url: https://www.nib.com.au/providers
+    status: 200
+    note: Healthcare provider landing page; links the HCP portal login and Honeysuckle Health registration. No API docs.
+  - url: https://www.nib.com.au/providers/hcp-portal/user/login
+    status: 200
+    note: Authenticated provider portal login wall.
+  - url: https://www.nib.com.au/providers/ancillary
+    status: 200
+    note: Directs ancillary providers to HICAPS and HealthPoint terminals for electronic claiming.
+  - url: https://my.nib.com.au/login
+    status: 302
+    note: Redirects to https://my.nib.com.au/auth/login with iss=https://id.nib.com.au/.
+  - url: https://my.nib.com.au/.well-known/openid-configuration
+    status: 404
+  - url: https://id.nib.com.au/.well-known/openid-configuration
+    status: 200
+    note: Anonymous OIDC discovery document; Auth0-backed member identity tenant.
+  - url: https://id.nib.com.au/.well-known/oauth-authorization-server
+    status: 200
+  - url: https://github.com/nib-health-funds
+    status: 200
+    note: Public GitHub org, 51 public repos, frontend/DevOps utilities only.
+  - url: https://github.com/nib-health-funds/api-integration
+    status: 200
+    note: Single-commit, README-only repository. No specification.
+  - url: https://api.nib.co.nz/
+    status: 200
+    note: 'False positive: wildcard host serving the nib New Zealand Gatsby marketing
+      site, not an API. /openapi.json, /swagger.json, /api-docs, /docs, /graphql
+      and /.well-known/openid-configuration on this host all return 404.'
+  - url: https://developer.nib.co.nz
+    status: 000
+    note: DNS does not resolve.
+  - url: https://www.nibgroup.com.au
+    status: 000
+    note: DNS does not resolve.
+  - url: https://developer.worldnomads.com
+    status: 000
+    note: DNS does not resolve (nib group travel brand).
+  - url: https://api.worldnomads.com
+    status: 000
+    note: DNS does not resolve.
+  acordPosture: no ACORD reference found
+  acordNote: |
+    No reference to ACORD, AL3, ACORD XML, NGDS, ACORD certification, or ACORD
+    APIs was found anywhere on nib.com.au, in its 1,445-URL sitemap, or in the
+    public nib-health-funds GitHub organisation. This is expected and structural
+    rather than a gap: ACORD is a property-and-casualty and life data standard,
+    and Australian private health insurance runs on an entirely different set of
+    rails — Medicare's ECLIPSE for in-hospital and medical claiming, and HICAPS
+    and HealthPoint terminals for ancillary/extras claiming, with APRA and the
+    Private Health Insurance Act supplying the reporting regime. nib names
+    HICAPS and HealthPoint explicitly on its provider pages. The sector-standard
+    equivalent of an ACORD posture, for this carrier, is "third-party claiming
+    terminal, no carrier-published API".
+  insuranceVerbs:
+    quote:
+      exposed: false
+      note: Quote and join flows are consumer web funnels on nib.com.au. The underlying
+        pricing service (nibnz-api-pricing-api.secure.nib-api.com.au, named in the nib NZ
+        CSP) is first-party and undocumented; root probe returns 404.
+    bind:
+      exposed: false
+    issue:
+      exposed: false
+    fnol:
+      exposed: false
+      note: Claims are lodged by members through my.nib.com.au or by providers through
+        HICAPS/HealthPoint terminals and the HCP portal. No public claims API.
+    audience: none public; provider-facing integration is partner/agent-gated
+  authModel:
+    scheme: OAuth2 / OpenID Connect (Auth0 tenant) for member sign-in
+    issuer: https://id.nib.com.au/
+    discovery: https://id.nib.com.au/.well-known/openid-configuration
+    discoveryStatus: 200
+    grantTypesSupported:
+    - client_credentials
+    - authorization_code
+    - refresh_token
+    - password
+    - implicit
+    - urn:ietf:params:oauth:grant-type:device_code
+    - urn:ietf:params:oauth:grant-type:token-exchange
+    - urn:ietf:params:oauth:grant-type:jwt-bearer
+    scopesSupported:
+    - openid
+    - profile
+    - offline_access
+    - name
+    - given_name
+    - family_name
+    - nickname
+    - email
+    - email_verified
+    - picture
+    - created_at
+    - identities
+    - phone
+    - address
+    note: |
+      Standard Auth0 identity scopes only — no product, policy, claims, or
+      partner scopes are published. The API gateway at api-gateway.nib.com.au
+      rejects anonymous requests with 403 and exposes no auth metadata.
+      Provider-side access is a username/password portal login.
+  webhooks:
+    published: false
+    asyncapi: false
+    note: No event catalog, webhook documentation, or AsyncAPI definition found.
+  postman:
+    published: false
+    note: A public Postman search for nib surfaced no nib-owned workspace or collection.
+  graphql:
+    published: false
+    note: No /graphql surface found on nib.com.au, api.nib.co.nz, or api-gateway.nib.com.au.
+  grpc:
+    published: false
+  openapiHarvested:
+    count: 0
+    note: No OpenAPI or Swagger document was found at any probed location, so the
+      openapi/ directory is deliberately absent from this repository.
+  transports:
+  - protocol: REST
+    scheme: https
+    baseURL: https://api-gateway.nib.com.au
+    documented: false
+    public: false
+    note: Real first-party AWS API Gateway named in nib's own Content-Security-Policy.
+      Anonymous requests return 403 {"message":"Forbidden"}. No published documentation.
+  - protocol: OIDC
+    scheme: https
+    baseURL: https://id.nib.com.au
+    documented: true
+    public: true
+    note: Auth0 member identity tenant; discovery document is anonymously readable.
+      Consumer sign-in only, not a product API.
+  - protocol: Terminal / EFTPOS claiming
+    scheme: proprietary
+    documented: false
+    note: HICAPS and HealthPoint point-of-service terminals carry ancillary claims
+      into nib. Third-party rails, not an nib-published interface.
+  - protocol: GraphQL
+    scheme: https
+    documented: false
+    public: false
+  - protocol: WebSocket
+    scheme: wss
+    documented: false
+    public: false
+sources:
+- url: https://www.nib.com.au/
+  type: Website
+  note: Corporate and consumer site; no developer navigation.
+- url: https://www.nib.com.au/sitemap.xml
+  type: Sitemap
+  note: 1,445 URLs; no developer/API/integration page.
+- url: https://www.nib.com.au/providers
+  type: PartnerPortal
+  note: Provider landing page; HCP portal login and Honeysuckle Health registration.
+- url: https://www.nib.com.au/providers/ancillary
+  type: Documentation
+  note: Names HICAPS and HealthPoint as the electronic claiming channels.
+- url: https://id.nib.com.au/.well-known/openid-configuration
+  type: OpenIDConnectDiscovery
+  note: Anonymous 200; Auth0-backed OIDC tenant for member sign-in.
+- url: https://github.com/nib-health-funds
+  type: GitHubOrganization
+  note: 51 public repos, no API specifications.
+actions:
+  status: built-stub
+  apisListed: 0
+  specsSaved: 0
+  reason: |
+    nib exposes no public, self-serve API surface. Recording the absence
+    accurately — a live but 403-gated first-party gateway, a provider login
+    wall, third-party claiming terminals, and an identity tenant — is the
+    correct outcome for this carrier and for the Australian private health
+    insurance market, where the Consumer Data Right never arrived and no open
+    insurance obligation exists.

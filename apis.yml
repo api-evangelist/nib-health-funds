@@ -93,7 +93,7 @@ apis:
   - OpenID Connect
   - Authentication
   - Auth0
-  - Single Sign-On
+  - SSO
   tags_raw:
   - Identity
   - OpenID Connect

@@ -1,11 +1,22 @@
-generated: '2026-07-25'
+generated: '2026-10-20'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
 hosts:
 - host: www.nib.com.au
   https: true
   tls_version: TLSv1.3
-  cert_expires: Oct  6 21:30:57 2026 GMT
+  cert_expires: Dec  4 21:47:18 2026 GMT
+  hsts: true
+  hsts_max_age: 15768000
+- host: my.nib.com.au
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Dec  4 21:47:18 2026 GMT
+  hsts: null
+- host: id.nib.com.au
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Dec  4 21:47:18 2026 GMT
   hsts: true
   hsts_max_age: 15768000
 domains:

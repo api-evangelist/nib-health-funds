@@ -1,0 +1,21 @@
+name: nib pricing
+generated: '2026-10-20'
+method: none
+source: https://www.nib.com.au/travel-insurance-cover/plans
+audience: consumer
+pricing_basis: none
+published: false
+plan_count: 0
+delivery:
+  model: unclear
+plans: []
+checked:
+- url: https://www.nib.com.au/travel-insurance-cover/plans
+  status: 200
+  finding: Consumer travel-insurance plan comparison (nib Direct Travel Insurance plans); no numeric price on the page — prices are quote-based.
+- url: https://www.nib.com.au/developers
+  status: 404
+- url: https://developer.nib.com.au/
+  status: null
+  finding: no DNS / no response
+note: nib is an Australian/New Zealand health and travel insurer. It publishes no public API and therefore no API or platform pricing. The only "plans" page on its site prices retail insurance products via quotes, which is a consumer product schedule, not API pricing.

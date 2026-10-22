@@ -1,0 +1,77 @@
+generated: '2026-10-20'
+method: searched
+probe: true
+source: https://www.nib.com.au/legal/privacy-policy
+pages_read:
+- url: https://www.nib.com.au/legal/privacy-policy
+  http_status: 200
+  note: nib Group privacy policy (nib holdings limited and related entities, incl. EEA/UK/NZ entities); the source of every signal below.
+- url: https://www.nib.com.au/docs/online-terms
+  http_status: 200
+  note: Online terms; no candidate regulatory-signal language found by the pre-flight probe.
+- url: https://www.nib.com.au/.well-known/security.txt
+  http_status: 200
+  note: 93 characters returned; not readable as a security.txt, no signal recorded.
+signals:
+  data_subject_request:
+    url: https://www.nib.com.au/legal/privacy-policy
+    section: '5. Accessing and correcting your personal information'
+    channel: privacyofficer@nib.com.au
+    rights_named: [access, correction, deletion, complaint, (UK/EU) rectification, erasure, restriction, portability, objection, automated decision making]
+    evidence:
+    - source: https://www.nib.com.au/legal/privacy-policy
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "You may wish to contact nib Group to access your personal information, to seek to correct it, delete it, to make a complaint about privacy (and under applicable privacy laws you may have rights of access to and correction of your personal information) or to manage your communication preferences. Our privacy email contact address for our Group Privacy Officer is privacyofficer@nib.com.au and further contact details for nib Group are set out below."
+    - source: https://www.nib.com.au/legal/privacy-policy
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "We will respond to your request for access to personal information we hold about you within the timeframes required by applicable laws and/or as soon as we reasonably can, including notifying you if we are unable to provide access (such as when we no longer hold the information) or if we are permitted by applicable law to refuse access."
+    note: A published request channel (Group Privacy Officer email, postal address, phone) for access, correction and deletion; response time is tied to "timeframes required by applicable laws", no fixed SLA. No request API is documented.
+  incident_notification:
+    url: https://www.nib.com.au/legal/privacy-policy
+    evidence:
+    - source: https://www.nib.com.au/legal/privacy-policy
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "our procedures to prevent and respond to any data breach, including where required, timely notification to the relevant privacy commissioner and affected individuals as soon as practicable after becoming aware of a breach;"
+    note: Commitment to notify the privacy commissioner and affected individuals of a data breach "as soon as practicable"; no fixed hour count is stated. This is an individual/regulator notification commitment in a consumer privacy policy, not a customer DPA SLA.
+  data_retention:
+    url: https://www.nib.com.au/legal/privacy-policy
+    section: '3. Storing and disclosing your personal information'
+    evidence:
+    - source: https://www.nib.com.au/legal/privacy-policy
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "Personal information is retained during the time we need it for the identified purposes, to the extent necessary for purposes reasonably related to those identified purposes (for example, resolving disputes) or as required by law."
+    - source: https://www.nib.com.au/legal/privacy-policy
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "we will use secure methods to destroy or permanently de-identify it when it is no longer required for any purpose under this Privacy Policy or otherwise in accordance with applicable laws and regulations."
+    note: Purpose-bound retention with destruction or de-identification at end of need; no specific retention periods are published.
+  data_residency:
+    url: https://www.nib.com.au/legal/privacy-policy
+    section: '3.2. We may disclose your personal information overseas'
+    regions: []
+    evidence:
+    - source: https://www.nib.com.au/legal/privacy-policy
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "If we transfer personal information from inside the UK to third countries outside the UK which have not been certified by the UK as having an adequate level of protection, steps we take to protect your personal information may include having an International Data Transfer Agreement in place, or using \"Standard Contractual Clauses\" with UK addendum."
+    note: Not a residency commitment -- the opposite. The policy states personal information may be disclosed overseas (e.g. EEA data shared with the Australian parent) and describes transfer safeguards (SCCs, UK IDTA, EU-US Data Privacy Framework). No selectable storage region is offered.
+  ai_transparency:
+    url: https://www.nib.com.au/legal/privacy-policy
+    evidence:
+    - source: https://www.nib.com.au/legal/privacy-policy
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "rights relating to automated decision making (you have the right to ask us to not be subject to a decision based solely on automated processing including profiling which produces legal effects or other similar significant effects concerning you)."
+    note: Weak signal. Listed among "Other rights which may be available to you under UK and EU laws"; it states a GDPR Art. 22 right, not a disclosure of where nib uses AI or automated decisions. No AI disclosure page was found.
+  exit_assistance:
+    url: https://www.nib.com.au/legal/privacy-policy
+    evidence:
+    - source: https://www.nib.com.au/legal/privacy-policy
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "right to data portability (in certain circumstances, you can request that personal data we hold about you be transmitted directly to another organisation);"
+    note: Weak signal. A UK/EU data-portability right for individuals stated in the privacy policy; no export tool, format or exit-assistance process is documented.

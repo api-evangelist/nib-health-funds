@@ -1,7 +1,11 @@
 aid: nib-health-funds
+
 url: https://raw.githubusercontent.com/api-evangelist/nib-health-funds/refs/heads/main/apis.yml
+
 name: nib
+
 kind: company
+
 description: >-
   nib holdings limited (ASX:NHF), trading as nib, is an Australian private
   health insurer headquartered in Newcastle, New South Wales, and one of the country's
@@ -29,6 +33,7 @@ description: >-
   @nib-components) across four public GitHub organisations, but they carry frontend
   and DevOps tooling rather than any API client library. nib is recorded here as an
   honest partner-gated stub.
+
 deliveryModel:
   model: saas
   open_source: false
@@ -40,6 +45,7 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: unknown
   onboarding: self-serve
@@ -57,7 +63,9 @@ accessModel:
   - security
   generated: '2026-09-02'
   method: derived
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+
+image: https://www.meshdesignsystem.com/images/brand/core/nib_RGB_PrimaryLogo_TrueGreen.svg
+
 tags:
 - Insurance
 - Australia
@@ -68,9 +76,81 @@ tags:
 - Travel Insurance
 - New Zealand
 - NDIS
+
 created: '2026-07-25'
-modified: '2026-07-25'
+
+modified: '2026-10-20'
+
 specificationVersion: '0.23'
+
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+
+common:
+- type: Hosts
+  url: hosts/nib-health-funds-hosts.yml
+- type: IntegrationEdges
+  url: integrations/nib-health-funds-integration-edges.yml
+- type: Vendors
+  url: vendors/nib-health-funds-vendors.yml
+- type: SDKs
+  url: packages/nib-health-funds-packages.yml
+- type: Pricing
+  url: https://www.nib.com.au/travel-insurance-cover/plans
+- type: Documentation
+  url: https://www.nib.com.au/docs/fund-rules
+- type: Authentication
+  url: authentication/nib-health-funds-authentication.yml
+- type: OAuthScopes
+  url: scopes/nib-health-funds-scopes.yml
+- type: WellKnown
+  url: well-known/nib-health-funds-well-known.yml
+- type: SecurityTxt
+  url: well-known/nib-health-funds-security.txt
+- type: Security
+  url: https://www.nib.com.au/.well-known/security.txt
+- type: Conformance
+  url: conformance/nib-health-funds-conformance.yml
+- type: Packages
+  url: packages/nib-health-funds-packages.yml
+- type: TermsOfService
+  url: https://www.nib.com.au/docs/online-terms
+- type: VulnerabilityDisclosure
+  url: security/nib-health-funds-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/nib-health-funds-domain-security.yml
+- type: Website
+  url: https://www.nib.com.au/
+- type: GitHubOrganization
+  url: https://github.com/nib-health-funds
+- type: LinkedIn
+  url: https://www.linkedin.com/company/nib-health
+- type: Blog
+  url: https://www.nib.com.au/the-checkup
+- type: Press
+  url: https://www.nib.com.au/media
+- type: Login
+  url: https://my.nib.com.au/login
+- type: PartnerPortal
+  url: https://www.nib.com.au/providers/hcp-portal/user/login
+- type: Providers
+  url: https://www.nib.com.au/providers
+- type: Support
+  url: https://www.nib.com.au/help
+- type: Contact
+  url: https://www.nib.com.au/contact-us
+- type: PrivacyPolicy
+  url: https://www.nib.com.au/legal/privacy-policy
+- type: OpenIDConnectDiscovery
+  url: https://id.nib.com.au/.well-known/openid-configuration
+- type: SignUp
+  url: https://www.nib.com.au/health-insurance/join/welcome
+- type: Careers
+  url: https://www.nib.com.au/careers
+- type: InvestorRelations
+  url: https://www.nib.com.au/shareholders
+
 apis:
 - aid: nib-health-funds:identity
   name: nib Identity (OpenID Connect)
@@ -112,55 +192,28 @@ apis:
     url: scopes/nib-health-funds-scopes.yml
   - type: WellKnown
     url: well-known/nib-health-funds-well-known.yml
-common:
-- type: Authentication
-  url: authentication/nib-health-funds-authentication.yml
-- type: OAuthScopes
-  url: scopes/nib-health-funds-scopes.yml
-- type: WellKnown
-  url: well-known/nib-health-funds-well-known.yml
-- type: SecurityTxt
-  url: well-known/nib-health-funds-security.txt
-- type: Security
-  url: https://www.nib.com.au/.well-known/security.txt
-- type: Conformance
-  url: conformance/nib-health-funds-conformance.yml
-- type: Packages
-  url: packages/nib-health-funds-packages.yml
-- type: LLMsTxt
-  url: llms/nib-health-funds-llms.txt
-- type: TermsOfService
-  url: https://www.nib.com.au/docs/online-terms
-- type: VulnerabilityDisclosure
-  url: security/nib-health-funds-vulnerability-disclosure.yml
-- type: DomainSecurity
-  url: security/nib-health-funds-domain-security.yml
-- type: Website
-  url: https://www.nib.com.au/
-- type: GitHubOrganization
-  url: https://github.com/nib-health-funds
-- type: LinkedIn
-  url: https://www.linkedin.com/company/nib-health
-- type: Blog
-  url: https://www.nib.com.au/the-checkup
-- type: Press
-  url: https://www.nib.com.au/media
-- type: Login
-  url: https://my.nib.com.au/login
-- type: PartnerPortal
-  url: https://www.nib.com.au/providers/hcp-portal/user/login
-- type: Providers
-  url: https://www.nib.com.au/providers
-- type: Support
-  url: https://www.nib.com.au/help
-- type: Contact
-  url: https://www.nib.com.au/contact-us
-- type: PrivacyPolicy
-  url: https://www.nib.com.au/legal/privacy-policy
-- type: OpenIDConnectDiscovery
-  url: https://id.nib.com.au/.well-known/openid-configuration
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+
 x-tags-removed:
 - Partner Gated
+
+x-coverage:
+  state: covered
+  reason: identity-verified
+  detail: Website www.nib.com.au answered 200 with title 'Health Insurance, Travel Cover & Healthy Living | nib'; all existing pointers re-fetched live on 2026-10-20; logo is the primary wordmark linked from the nib homepage (nib's Mesh design system).
+  evidence:
+  - url: https://www.nib.com.au/
+    status: 200
+  - url: https://www.meshdesignsystem.com/images/brand/core/nib_RGB_PrimaryLogo_TrueGreen.svg
+    status: 200
+  - url: https://www.nib.com.au/health-insurance/join/welcome
+    status: 200
+  - url: https://www.nib.com.au/careers
+    status: 200
+  - url: https://www.nib.com.au/shareholders
+    status: 200
+x-enrichment:
+  date: '2026-10-20'
+  status: enriched
+  artifacts_added: 7
+  pass: modular-v1
+  engine: identity=anthropic,contract=anthropic,surfaces=anthropic,docs=anthropic,regulatory=anthropic

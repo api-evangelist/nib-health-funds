@@ -1,0 +1,26 @@
+name: nib MCP server
+type: MCPServer
+generated: '2026-10-20'
+method: none
+status: none
+description: >-
+  Checked, nothing there. nib publishes no MCP server (hosted or local) and no
+  OpenAPI definition from which a candidate tool list could be derived. The
+  pre-flight contract discovery on www.nib.com.au, nib.com.au, id.nib.com.au,
+  my.nib.com.au and go.nib.com.au graded mcp/openapi/graphql/asyncapi all
+  'absent', the documented-tool-table probe found no MCP docs, nib's GitHub org
+  (nib-health-funds, 39 repos listed) holds no contract files, and a web search
+  for an nib MCP server returned no nib-specific result. Its only gateway,
+  api-gateway.nib.com.au, is credential-gated (HTTP 403) and undocumented.
+checked:
+- url: https://www.nib.com.au/
+  result: pre-flight contract_discovery verdict mcp absent (2026-10-20)
+- url: https://github.com/nib-health-funds
+  result: pre-flight github_specs found 0 contract files
+- search: nib health insurance MCP server "Model Context Protocol"
+  result: no nib-specific MCP server found (2026-10-20)
+tools: []
+deployment:
+  mode: none
+  auth: unknown
+  verified: searched

@@ -1,0 +1,10 @@
+name: nib rate limits
+generated: '2026-10-20'
+method: none
+limit_count: 0
+limits: []
+checked:
+- https://www.nib.com.au/developers (404)
+- https://developer.nib.com.au/ (no response)
+- https://id.nib.com.au/.well-known/openid-configuration (consumer sign-in OIDC discovery; states no limits)
+note: nib publishes no public API documentation and no rate-limit policy. Its only machine-readable surface is the consumer Auth0 identity tenant (id.nib.com.au), whose limits nib does not document.

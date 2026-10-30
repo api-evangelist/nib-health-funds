@@ -1,4 +1,4 @@
-# nib (nib-health-funds)
+# nib
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,55 +64,112 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-nib holdings limited (ASX:NHF), trading as nib, is an Australian private health insurer headquartered in Newcastle, New South Wales, and one of the country's largest health funds alongside Medibank, Bupa and HCF. Its lines of business span Australian residents health insurance, New Zealand health insurance through nib nz insurance limited, international workers and overseas student health cover (OSHC), travel insurance, and nib Thrive, its National Disability Insurance Scheme plan-management arm.
+nib holdings limited (ASX:NHF), trading as nib, is an Australian private health insurer headquartered in Newcastle, New South Wales, and one of the country's largest health funds alongside Medibank, Bupa and HCF. Its lines of business span Australian residents health insurance, New Zealand health insurance through nib nz insurance limited, international workers and overseas student health cover (OSHC), travel insurance, and nib Thrive, its National Disability Insurance Scheme plan-management arm. As a private health insurer it is regulated by APRA and the Private Health Insurance Act rather than by an open-data mandate — Australia's Consumer Data Right was designated to extend to general insurance and then deferred, and it never reached private health insurance at all, so there is no regulatory forcing function pushing nib toward public APIs. Its API posture reflects that exactly: nib publishes no public, self-serve developer portal and no downloadable OpenAPI definitions. Probes of developer.nib.com.au, developers.nib.com.au, docs.nib.com.au and api.nib.com.au do not resolve, and /developers, /api, /developer, /partners and /integrations on nib.com.au all return 404. A real AWS API Gateway host, api-gateway.nib.com.au, is referenced by nib's own web front-end Content-Security-Policy and answers anonymously with HTTP 403 {"message":"Forbidden"}, confirming a first-party, credential-gated gateway with no public documentation. Healthcare provider integration runs through the login-walled nib HCP portal and through third-party claiming terminals — HICAPS and HealthPoint — plus Honeysuckle Health for medical network and MediGap registration, not through an nib-published API. Member identity is an Auth0-backed OpenID Connect tenant at id.nib.com.au whose discovery document is publicly readable, as is an RFC 9116 security.txt at www.nib.com.au naming security@nib.com.au. nib also publishes three first-party npm scopes (@nib, @nib-styles, @nib-components) across four public GitHub organisations, but they carry frontend and DevOps tooling rather than any API client library. nib is recorded here as an honest partner-gated stub.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/nib-health-funds/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/nib-health-funds/refs/heads/main/apis.yml)
+**Areas:** Insurance · Australia · Health Insurance · Carrier · Claims · Private Health Insurance · Travel Insurance · New Zealand · NDIS
 
-## API Posture
+## nib on APIs.io
 
-nib publishes **no public, self-serve developer portal and no downloadable OpenAPI definitions**. This profile records that absence honestly rather than inventing a surface.
+Everything profiled for nib is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/nib-health-funds/](https://apis.io/providers/nib-health-funds/)** — or go straight to one of the APIs or properties below.
 
-- `developer.nib.com.au`, `developers.nib.com.au`, `docs.nib.com.au` and `api.nib.com.au` do not resolve.
-- `/developers`, `/api`, `/developer`, `/partners` and `/integrations` on `nib.com.au` all return **404**.
-- The published sitemap index expands to 1,445 URLs and contains no developer or API documentation page.
-- A real first-party gateway exists at `api-gateway.nib.com.au` — named in nib's own Content-Security-Policy — and answers anonymously with **403** `{"message":"Forbidden"}`. Real internal APIs, no public surface.
-- Healthcare provider integration is a **login wall** (the [nib HCP portal](https://www.nib.com.au/providers/hcp-portal/user/login)) plus third-party **HICAPS** and **HealthPoint** claiming terminals, with Honeysuckle Health handling medical network and MediGap registration.
-- Member identity is an Auth0-backed OpenID Connect tenant at `id.nib.com.au` whose [discovery document](https://id.nib.com.au/.well-known/openid-configuration) is anonymously readable. Consumer sign-in only — no product, policy, or claims scopes.
-- **ACORD posture: no ACORD reference found.** ACORD, AL3 and NGDS are property-and-casualty and life standards; Australian private health insurance runs on Medicare ECLIPSE plus HICAPS/HealthPoint terminals instead.
-- None of quote, bind, issue or FNOL is exposed as a public API.
-- No public Postman workspace, no GraphQL endpoint, no webhook or AsyncAPI event catalog.
+### APIs (1)
 
-Australia has the legal machinery for open insurance and no live obligation. The Consumer Data Right opened banking and energy and was designated to extend to general insurance before being deferred and de-prioritised — and it never covered private health insurance at all. nib's posture is exactly what a market with no forcing function produces.
+- [nib Identity (OpenID Connect)](https://apis.io/apis/nib-health-funds/identity/) — The Auth0-backed OpenID Connect tenant behind nib member sign-in, issuer https://id.nib.com.au/. It is the only nib API surface with anonymously readable,…
 
-## Tags
+### Published properties
 
-- Insurance
-- Australia
-- Health Insurance
-- Carrier
-- Claims
-- Private Health Insurance
-- Travel Insurance
-- New Zealand
-- NDIS
-- Partner Gated
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Timestamps
+#### Security (3)
 
-- **Created:** 2026-07-25
-- **Modified:** 2026-07-25
+Authentication, trust centre, and vulnerability disclosure.
 
-## APIs
+- [Nib Health Funds Authentication](https://apis.io/security/nib-health-funds/nib-health-funds-authentication/)
+- [Nib Health Funds Domain Security](https://apis.io/security/nib-health-funds/nib-health-funds-domain-security/)
+- [Nib Health Funds Vulnerability Disclosure](https://apis.io/security/nib-health-funds/nib-health-funds-vulnerability-disclosure/)
 
-None. nib does not publish a public API. See [review.yml](review.yml) for the full probe log, HTTP statuses, ACORD posture, and auth model.
+#### OAuth scopes (1)
 
-## Links
+The permissions the API asks for.
+
+- [Nib Health Funds Scopes](https://apis.io/scopes/nib-health-funds/nib-health-funds-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Nib Health Funds Plans Pricing](https://apis.io/plans/nib-health-funds/nib-health-funds-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Nib Health Funds Rate Limits](https://apis.io/rate-limits/nib-health-funds/nib-health-funds-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.nib.com.au/)
-- [Healthcare providers](https://www.nib.com.au/providers)
-- [nib HCP portal (login)](https://www.nib.com.au/providers/hcp-portal/user/login)
-- [Member login](https://my.nib.com.au/login)
-- [GitHub organisation](https://github.com/nib-health-funds)
-- [LinkedIn](https://www.linkedin.com/company/nib-health)
-- [The Check Up (blog)](https://www.nib.com.au/the-checkup)
-- [Media centre](https://www.nib.com.au/media)
+- [Documentation](https://www.nib.com.au/docs/fund-rules)
+- [Pricing](https://www.nib.com.au/travel-insurance-cover/plans)
+- [Sign up](https://www.nib.com.au/health-insurance/join/welcome)
+- [Support](https://www.nib.com.au/help)
+- [Blog](https://www.nib.com.au/the-checkup)
+- [Security](https://www.nib.com.au/.well-known/security.txt)
+- [Terms of service](https://www.nib.com.au/docs/online-terms)
+- [Privacy policy](https://www.nib.com.au/legal/privacy-policy)
+- [GitHub](https://github.com/nib-health-funds)
+
+## API Evangelist rating
+
+**Kin Score 27.6** — thin · rubric 0.24.0 · scored 2026-10-20
+
+| Facet | Score |
+|---|---|
+| Discoverability | 74.1 |
+| Contract quality | 0.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 35.7 |
+| Access clarity | 38.2 |
+
+**Agent readiness 20.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+
+**Regulatory alignment 42.1** — Insurance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/nib-health-funds/](https://apis.io/providers/nib-health-funds/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for nib: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/nib-health-funds/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
